@@ -1,16 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ calc
+ indent-region
+ ispell
  cd
  5x5
  arp
  dbx
- dig
- erc
- ert
 )
 
 ;; ----- smex-data -----
 (
- 
+ (indent-region . 3)
+ (ispell . 1)
+ (calc . 1)
 )
