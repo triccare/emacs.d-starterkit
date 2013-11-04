@@ -1,13 +1,15 @@
 ;; Setup the starter kit.
 (require 'package)
 (add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby)
+(defvar my-packages '(jedi ein starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -26,6 +28,20 @@
 (setq-default ls-lisp-use-insert-directory-program nil)
 (setq-default ls-lisp-dirs-first t)
 (setq ls-lisp-ignore-case t)
+
+;; el-get package management system.
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
+
+(el-get 'sync)
+(setq el-get-user-package-directory "~/.emacs.d/el-get-init-files/")
 
 ;; PHP mode
 (setq warning-suppress-types nil) ;Needed so the following does not fail.
@@ -60,6 +76,10 @@
 (setq-default scss-compile-at-save nil);
 (setq-default css-indent-offset 2);
 
+;; JEDI: Python autocomplete
+(add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+
 ;; Show all non-ascii characters in a buffer
 (defun occur-non-ascii ()
   "Find any non-ascii characters in the current buffer."
@@ -75,3 +95,6 @@
 (global-set-key (kbd "C-<f13>") 'other-window)
 
 (setq ispell-program-name "/usr/local/bin/ispell")
+
+;; Start as a server
+(server-start)
