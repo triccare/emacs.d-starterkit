@@ -73,3 +73,5 @@
 (set-face-background 'region "DarkSlateGray")
 (set-cursor-color "gainsboro")
 (global-set-key (kbd "C-<f13>") 'other-window)
+
+(setq ispell-program-name "/usr/local/bin/ispell")
