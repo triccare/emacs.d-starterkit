@@ -9,7 +9,7 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(jedi ein starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby)
+(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby jedi elpy)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -17,6 +17,7 @@
     (package-install p)))
 
 ;; Basic defaults
+(add-to-list 'load-path "~/.emacs.d/elisp/bin") ; Generic script area.
 (setq-default auto-save-default nil) ;Do not autosave.
 (setq-default backup-inhibited t)    ;Do not create ~ files.
 (setq-default indent-tabs-mode nil)  ;No tabs: required for HAML, and I just hate them anyways.
@@ -76,9 +77,38 @@
 (setq-default scss-compile-at-save nil);
 (setq-default css-indent-offset 2);
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; General python setup
+
 ;; JEDI: Python autocomplete
 (add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/emacs-jedi-direx"))
+(require 'jedi-direx)
+(eval-after-load "python"
+  '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
+
+;; elpy
+(elpy-enable)
+(elpy-use-ipython)
+(elpy-clean-modeline)
+
+;; pymacs
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+(autoload 'pymacs-autoload "pymacs")
+;;(eval-after-load "pymacs"
+;;  '(add-to-list 'pymacs-load-path YOUR-PYMACS-DIRECTORY"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Generic functions
+
 
 ;; Show all non-ascii characters in a buffer
 (defun occur-non-ascii ()
@@ -88,7 +118,7 @@
 
 ;;;;;;;;;;;;;;;;;
 ; Other specifics
-(set-background-color "black")
+(set-background-color "grey20")
 (set-foreground-color "DarkOrange")
 (set-face-background 'region "DarkSlateGray")
 (set-cursor-color "gainsboro")
