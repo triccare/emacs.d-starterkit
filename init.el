@@ -1,7 +1,7 @@
 ;; Setup the starter kit.
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;(add-to-list 'package-archives
+;             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
@@ -31,18 +31,18 @@
 (setq ls-lisp-ignore-case t)
 
 ;; el-get package management system.
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (let (el-get-master-branch)
-      (goto-char (point-max))
-      (eval-print-last-sexp))))
+;; (unless (require 'el-get nil 'noerror)
+;;   (with-current-buffer
+;;       (url-retrieve-synchronously
+;;        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+;;     (let (el-get-master-branch)
+;;       (goto-char (point-max))
+;;       (eval-print-last-sexp))))
 
-(el-get 'sync)
-(setq el-get-user-package-directory "~/.emacs.d/el-get-init-files/")
+;; (el-get 'sync)
+;; (setq el-get-user-package-directory "~/.emacs.d/el-get-init-files/")
 
 ;; PHP mode
 (setq warning-suppress-types nil) ;Needed so the following does not fail.
