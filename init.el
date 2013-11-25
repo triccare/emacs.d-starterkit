@@ -9,7 +9,7 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby jedi elpy)
+(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby multi-web-mode yaml-mode haml-mode scss-mode jedi elpy)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -50,7 +50,7 @@
 (require 'php-mode)
 
 ;; Multi-web-mode
-(add-to-list 'load-path "~/.emacs.d/elisp/multi-web-mode")
+;(add-to-list 'load-path "~/.emacs.d/elisp/multi-web-mode")
 (require 'multi-web-mode)
 (setq mweb-default-major-mode 'html-mode)
 (setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
@@ -60,18 +60,18 @@
 (multi-web-global-mode 1)
 
 ;; YAML
-(add-to-list 'load-path "~/.emacs.d/elisp/yaml-mode")
+;(add-to-list 'load-path "~/.emacs.d/elisp/yaml-mode")
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;; HAML
-(add-to-list 'load-path "~/.emacs.d/elisp/haml-mode")
+;(add-to-list 'load-path "~/.emacs.d/elisp/haml-mode")
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 (add-to-list 'auto-mode-alist '("\\.hamljs$" . haml-mode))
 
 ;; SCSS mode
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/scss-mode"))
+;(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/scss-mode"))
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (setq-default scss-compile-at-save nil);
