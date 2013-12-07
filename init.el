@@ -1,15 +1,15 @@
 ;; Setup the starter kit.
 (require 'package)
-;(add-to-list 'package-archives
-;             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby multi-web-mode yaml-mode haml-mode scss-mode jedi elpy)
+(defvar my-packages '(direx elpy jedi starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby multi-web-mode yaml-mode haml-mode scss-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
