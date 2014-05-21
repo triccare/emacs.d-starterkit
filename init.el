@@ -9,7 +9,7 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(direx elpy jedi starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby multi-web-mode yaml-mode haml-mode scss-mode)
+(defvar my-packages '(direx elpy jedi starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby multi-web-mode yaml-mode haml-mode scss-mode color-theme)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -117,12 +117,26 @@
   (occur "[^[:ascii:]]"))
 
 ;;;;;;;;;;;;;;;;;
+;; Theme setup
+(setq color-theme-is-global t)
+(color-theme-initialize)
+;(color-theme-jsc-dark)
+;(color-theme-infodoc)
+;(color-theme-jb-simple)
+;(color-theme-jb-katester)
+;(color-theme-jb-ld-dark)
+;(color-theme-jb-resolve)
+;(color-theme-jb-retro-orange)
+(color-theme-whateveryouwant)
+;(color-theme-xp)
+;(color-theme-xemacs)
+
+;;;;;;;;;;;;;;;;;
 ; Other specifics
-(set-background-color "grey20")
-(set-foreground-color "DarkOrange")
-(set-face-background 'region "DarkSlateGray")
-(set-cursor-color "gainsboro")
-(global-set-key (kbd "C-<f13>") 'other-window)
+;(set-background-color "grey20")
+;(set-foreground-color "DarkOrange")
+;(set-face-background 'region "DarkSlateGray")
+;(set-cursor-color "gainsboro")
 
 (setq ispell-program-name "/usr/local/bin/ispell")
 
