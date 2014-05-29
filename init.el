@@ -118,8 +118,11 @@
 
 ;;;;;;;;;;;;;;;;;
 ;; Theme setup
+(add-to-list 'load-path "~/.emacs.d/elisp/themes")
+(autoload 'color-theme-jde-whateveryouwant "jde-whateveryouwant")
 (setq color-theme-is-global t)
 (color-theme-initialize)
+(color-theme-jde-whateveryouwant)
 ;(color-theme-jsc-dark)
 ;(color-theme-infodoc)
 ;(color-theme-jb-simple)
@@ -127,7 +130,7 @@
 ;(color-theme-jb-ld-dark)
 ;(color-theme-jb-resolve)
 ;(color-theme-jb-retro-orange)
-(color-theme-whateveryouwant)
+;(color-theme-whateveryouwant)
 ;(color-theme-xp)
 ;(color-theme-xemacs)
 
