@@ -9,7 +9,7 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(direx elpy jedi starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby multi-web-mode yaml-mode haml-mode scss-mode color-theme)
+(defvar my-packages '(direx elpy jedi starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby multi-web-mode yaml-mode haml-mode scss-mode color-theme jedi-direx)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
