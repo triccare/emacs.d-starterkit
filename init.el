@@ -93,7 +93,6 @@
 ;; elpy
 (elpy-enable)
 (elpy-use-ipython)
-(elpy-clean-modeline)
 
 ;; pymacs
 (autoload 'pymacs-apply "pymacs")
