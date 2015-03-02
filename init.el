@@ -1,7 +1,8 @@
+;; Start as a server
+(server-start)
+
 ;; Setup the starter kit.
 (require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
@@ -9,7 +10,18 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(direx elpy jedi starter-kit starter-kit-lisp starter-kit-bindings starter-kit-eshell starter-kit-js starter-kit-ruby multi-web-mode yaml-mode haml-mode scss-mode color-theme jedi-direx)
+(defvar my-packages '(direx
+                      elpy
+                      jedi
+                      starter-kit
+                      starter-kit-lisp
+                      starter-kit-bindings
+                      starter-kit-eshell
+                      starter-kit-js
+                      yaml-mode
+                      haml-mode
+                      scss-mode
+                      jedi-direx)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -30,34 +42,10 @@
 (setq-default ls-lisp-dirs-first t)
 (setq ls-lisp-ignore-case t)
 
-;; el-get package management system.
-;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
-;; (unless (require 'el-get nil 'noerror)
-;;   (with-current-buffer
-;;       (url-retrieve-synchronously
-;;        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-;;     (let (el-get-master-branch)
-;;       (goto-char (point-max))
-;;       (eval-print-last-sexp))))
-
-;; (el-get 'sync)
-;; (setq el-get-user-package-directory "~/.emacs.d/el-get-init-files/")
-
 ;; PHP mode
 (setq warning-suppress-types nil) ;Needed so the following does not fail.
 (add-to-list 'load-path "~/.emacs.d/elisp/php-mode-1.5.0")
 (require 'php-mode)
-
-;; Multi-web-mode
-;(add-to-list 'load-path "~/.emacs.d/elisp/multi-web-mode")
-(require 'multi-web-mode)
-(setq mweb-default-major-mode 'html-mode)
-(setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-                  (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
-                  (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
-(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5" "inc" "aspx"))
-(multi-web-global-mode 1)
 
 ;; YAML
 ;(add-to-list 'load-path "~/.emacs.d/elisp/yaml-mode")
@@ -117,11 +105,11 @@
 
 ;;;;;;;;;;;;;;;;;
 ;; Theme setup
-(add-to-list 'load-path "~/.emacs.d/elisp/themes")
-(autoload 'color-theme-jde-whateveryouwant "jde-whateveryouwant")
-(setq color-theme-is-global t)
-(color-theme-initialize)
-(color-theme-jde-whateveryouwant)
+;(add-to-list 'load-path "~/.emacs.d/elisp/themes")
+;(autoload 'color-theme-jde-whateveryouwant "jde-whateveryouwant")
+;(setq color-theme-is-global t)
+;(color-theme-initialize)
+;(color-theme-jde-whateveryouwant)
 ;(color-theme-jsc-dark)
 ;(color-theme-infodoc)
 ;(color-theme-jb-simple)
@@ -140,7 +128,19 @@
 ;(set-face-background 'region "DarkSlateGray")
 ;(set-cursor-color "gainsboro")
 
-(setq ispell-program-name "/usr/local/bin/ispell")
+;(setq ispell-program-name "/usr/local/bin/ispell")
 
-;; Start as a server
-(server-start)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(custom-enabled-themes (quote (misterioso))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
