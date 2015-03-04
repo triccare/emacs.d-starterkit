@@ -10,7 +10,8 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(direx
+(defvar my-packages '(undo-tree
+                      direx
                       elpy
                       jedi
                       starter-kit
@@ -34,6 +35,9 @@
 (setq-default backup-inhibited t)    ;Do not create ~ files.
 (setq-default indent-tabs-mode nil)  ;No tabs: required for HAML, and I just hate them anyways.
 (setq-default js-indent-level 2)     ;Javascript indent level.
+
+;; Replace the undo system
+(global-undo-tree-mode)
 
 ;; Use Emacs 'ls' implementation, basically to sort folders
 ;; separately from files.
