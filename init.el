@@ -41,6 +41,7 @@
 (setq-default backup-inhibited t)    ;Do not create ~ files.
 (setq-default indent-tabs-mode nil)  ;No tabs: required for HAML, and I just hate them anyways.
 (setq-default js-indent-level 2)     ;Javascript indent level.
+(electric-pair-mode 1)
 
 ;; helm
 (require 'helm)
@@ -82,6 +83,21 @@
 (setq-default ls-lisp-use-insert-directory-program nil)
 (setq-default ls-lisp-dirs-first t)
 (setq ls-lisp-ignore-case t)
+
+;; Python
+;; Remove trailing whitespace manually by typing C-t C-w.
+(add-hook 'python-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-t C-w")
+                           'delete-trailing-whitespace)))
+
+;; Automatically remove trailing whitespace when file is saved.
+(add-hook 'python-mode-hook
+      (lambda()
+        (add-hook 'local-write-file-hooks
+              '(lambda()
+                 (save-excursion
+                   (delete-trailing-whitespace))))))
 
 ;; PHP mode
 (setq warning-suppress-types nil) ;Needed so the following does not fail.
