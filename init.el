@@ -41,6 +41,7 @@
 (setq-default backup-inhibited t)    ;Do not create ~ files.
 (setq-default indent-tabs-mode nil)  ;No tabs: required for HAML, and I just hate them anyways.
 (setq-default js-indent-level 2)     ;Javascript indent level.
+(global-auto-revert-mode t)          ; Keep buffers synced with files.
 
 ;; helm
 (require 'helm)
