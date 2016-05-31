@@ -44,9 +44,19 @@
 (global-auto-revert-mode t)          ;Keep buffers synced with files.
 (electric-pair-mode 1)               ;Automatically creating matching braces.
 
+;; org
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
 ;; helm
 (require 'helm)
 (require 'helm-config)
+(require 'helm-mt)
+(global-set-key (kbd "C-x t") 'helm-mt)
 
 ;; projectile
 (projectile-global-mode)
@@ -123,6 +133,9 @@
 (setq-default scss-compile-at-save nil);
 (setq-default css-indent-offset 2);
 
+;; Javascript/JSON
+(setq-default js-indent-level 4)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; General python setup
@@ -195,7 +208,11 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (misterioso))))
+ '(custom-enabled-themes (quote (misterioso)))
+ '(org-agenda-files (quote ("~/Downloads/test.org")))
+ '(package-selected-packages
+   (quote
+    (yaml-mode undo-tree starter-kit-lisp starter-kit-js starter-kit-eshell starter-kit-bindings scss-mode s jedi-direx helm-projectile helm-mt haml-mode elpy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
