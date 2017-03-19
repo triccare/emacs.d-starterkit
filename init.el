@@ -174,6 +174,10 @@
   (interactive)
   (occur "[^[:ascii:]]"))
 
+;; org-mode
+(setq org-agenda-todo-ignore-deadlines t)
+
+
 ;;;;;;;;;;;;;;;;;
 ;; Theme setup
 ;(add-to-list 'load-path "~/.emacs.d/elisp/themes")
@@ -209,7 +213,10 @@
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(custom-enabled-themes (quote (misterioso)))
- '(org-agenda-files (quote ("~/Downloads/test.org")))
+ '(org-agenda-files
+   (quote
+    ("~/Documents/dropboxes/stscieisenhamer/Box Sync/jde/org/diary.org")))
+ '(org-agenda-start-on-weekday 6)
  '(package-selected-packages
    (quote
     (yaml-mode undo-tree starter-kit-lisp starter-kit-js starter-kit-eshell starter-kit-bindings scss-mode s jedi-direx helm-projectile helm-mt haml-mode elpy))))
